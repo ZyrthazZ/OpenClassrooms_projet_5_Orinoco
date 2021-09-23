@@ -7,6 +7,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <link rel="shortcut icon" type="image/png" href="favicon.jpg">
         
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
         <link rel="stylesheet" href="css/main.css">
         
         <title>Orinoco</title>
@@ -19,7 +20,7 @@
             <div class="container">
                 <div class="row">
                     <nav class="col navbar navbar-expand-lg navbar-light bg-light mx-auto">
-                        <img src="logo.png" class="img-fluid mx-lg-5 order-0" width="350"  alt="Logo Orinoco"/>
+                        <img src="../back_end/images/logo.png" class="img-fluid mx-lg-5 order-0" width="350"  alt="Logo Orinoco"/>
                         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarContent">
                             <span class="navbar-toggler-icon"></span>
                         </button>
@@ -39,11 +40,52 @@
         </header>
         
         <!--MAIN-->
-        <main>
+        <main class="mt-5">
+            
+            <!--Titre et présentation-->
+            <section class="bg-primary">
+                <h1 class="text-center text-white py-2">Orinoco, la référence des appareils photos vintages</h1>
+                <p class="text-center text-white py-3">Faîtes votre choix parmi nos différents modèles de qualité</p>
+            </section>
+            
+            <!--Carousel de photos d'appareils-->
+            <section class="container">
+                 <div class="row">
+                    <div class="col">
+                        <div id="carouselControls" class="carousel slide" data-ride="carousel">
+                            <div class="carousel-inner">
+                                <div class="carousel-item active">
+                                    <img src="../back_end/images/vcam_1.jpg" class="d-block w-100" alt="Modèle appareil photo Zurss 50S"/>
+                                </div>
+                                <div class="carousel-item">
+                                    <img src="../back_end/images/vcam_2.jpg" class="d-block w-100" alt="Modèle appareil photo Hirsch 400DTS"/>
+                                </div>
+                                <div class="carousel-item">
+                                    <img src="../back_end/images/vcam_3.jpg" class="d-block w-100" alt="Modèle appareil photo Franck JS 105"/>
+                                </div>
+                                <div class="carousel-item">
+                                    <img src="../back_end/images/vcam_4.jpg" class="d-block w-100" alt="Modèle appareil photo Kuros TTS"/>
+                                </div>
+                                <div class="carousel-item">
+                                    <img src="../back_end/images/vcam_5.jpg" class="d-block w-100" alt="Modèle appareil photo Katatone"/>
+                                </div>
+                            </div>
+                            <a class="carousel-control-prev" href="#carouselControls" role="button" data-slide="prev">
+                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                <span class="sr-only">Précédent</span>
+                            </a>
+                            <a class="carousel-control-next" href="#carouselControls" role="button" data-slide="next">
+                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                <span class="sr-only">Suivant</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </section>
         </main>
         
         <!--FOOTER-->
-        <footer class="fixed-bottom">
+        <footer>
             <div class="container">
                 <div class="row">
                     <div class="col">
