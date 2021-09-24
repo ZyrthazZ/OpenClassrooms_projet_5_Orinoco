@@ -1,0 +1,4 @@
+Pour les produits : -Faire une section "search" au dessus pour les filtrer
+- Ajouter du shadow aux cards
+
+Pour le footer : ajuster la taille de la police
