@@ -49,7 +49,7 @@
             </section>
             
             <!--Carousel de photos d'appareils-->
-            <section class="container">
+            <section class="container my-5">
                  <div class="row">
                     <div class="col">
                         <div id="carouselControls" class="carousel slide" data-ride="carousel">
@@ -83,12 +83,18 @@
                 </div>
             </section>
             
+            <!--Filtre des produits-->
+            <div class="container">
+                <div class="col">
+                    <input class="form-control" id="searchInput" type="text" placeholder="Filtrer...">
+                </div>
+            </div>
             
             <!--Présentation des différents produits-->
             <section class="m-5" id="products">
                 <div class="row" id="productsList">
                     <div class="col-md-6 col-xl-4">
-                        <div class="card mb-5">
+                        <div class="card mb-5 shadow p-3 mb-5 bg-white rounded">
                             <img class="card-img-top p-3" id="productImg" src="../back_end/images/vcam_1.jpg" alt="Modèle appareil photo Zurss 50S"/>
                             <div class="card-body">
                                 <h3 class="card-title" id="productName">Zurss 50S</h5>
@@ -99,7 +105,7 @@
                         </div>
                     </div>
                     <div class="col-md-6 col-xl-4">
-                        <div class="card mb-5">
+                        <div class="card mb-5 shadow p-3 mb-5 bg-white rounded">
                             <img class="card-img-top p-3" id="productImg" src="../back_end/images/vcam_2.jpg" alt="Modèle appareil photo Hirsch 400DTS"/>
                             <div class="card-body">
                                 <h3 class="card-title" id="productName">Hirsch 400DTS</h5>
@@ -110,7 +116,7 @@
                         </div>
                     </div>
                     <div class="col-md-6 col-xl-4">
-                        <div class="card mb-5">
+                        <div class="card mb-5 shadow p-3 mb-5 bg-white rounded">
                             <img class="card-img-top p-3" id="productImg" src="../back_end/images/vcam_3.jpg" alt="Modèle appareil photo Franck JS 105"/>
                             <div class="card-body">
                                 <h3 class="card-title" id="productName">Franck JS 105</h5>
@@ -121,7 +127,7 @@
                         </div>
                     </div>
                     <div class="col-md-6 col-xl-4">
-                        <div class="card mb-5">
+                        <div class="card mb-5 shadow p-3 mb-5 bg-white rounded">
                             <img class="card-img-top p-3" id="productImg" src="../back_end/images/vcam_4.jpg" alt="Modèle appareil photo Kuros TTS"/>
                             <div class="card-body">
                                 <h3 class="card-title" id="productName">Kuros TTS</h5>
@@ -132,7 +138,7 @@
                         </div>
                     </div>
                     <div class="col-md-6 col-xl-4">
-                        <div class="card mb-5">
+                        <div class="card mb-5 shadow p-3 mb-5 bg-white rounded">
                             <img class="card-img-top p-3" id="productImg" src="../back_end/images/vcam_5.jpg" alt="Modèle appareil photo Katatone"/>
                             <div class="card-body">
                                 <h3 class="card-title" id="productName">Katatone</h5>
@@ -174,6 +180,18 @@
         <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
         
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+        
+        <script>
+            $(document).ready(function(){
+               $("#searchInput").on("keyup", function() {
+                  var value = $(this).val().toLowerCase();
+                  $("#productsList .col-md-6").filter(function() {
+                     $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+                  });
+               });
+            });
+         </script>
+     
         
     </body>
 </html>

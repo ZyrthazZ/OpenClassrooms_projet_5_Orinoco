@@ -1,11 +1,7 @@
+@import "layout/cards";
+@import "base/base";
 @import "variables_overrides";
 @import "../node_modules/bootstrap/scss/bootstrap.scss";
 
 
-body {
-    font-size: 1.5rem;
-}
 
-.card {
-    font-size: 1rem;
-}

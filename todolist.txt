@@ -1,4 +1,3 @@
-Pour les produits : -Faire une section "search" au dessus pour les filtrer
-- Ajouter du shadow aux cards
+Faire la page product, la page basket et la page confirmation
 
-Pour le footer : ajuster la taille de la police
+Faire le Javascript

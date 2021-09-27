@@ -1,4 +1,15 @@
 @charset "UTF-8";
+.card {
+  transition-duration: 0.2s;
+}
+.card:hover {
+  transform: scale(1.01);
+}
+
+header {
+  font-size: 1.5rem;
+}
+
 /*!
  * Bootstrap v5.1.1 (https://getbootstrap.com/)
  * Copyright 2011-2021 The Bootstrap Authors
@@ -11112,13 +11123,6 @@ textarea.form-control-lg {
   .d-print-none {
     display: none !important;
   }
-}
-body {
-  font-size: 1.5rem;
-}
-
-.card {
-  font-size: 1rem;
 }
 
 /*# sourceMappingURL=main.css.map */
