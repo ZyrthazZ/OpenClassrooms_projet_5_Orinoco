@@ -1,8 +1,8 @@
 @charset "UTF-8";
-.card {
+#productsList .card {
   transition-duration: 0.2s;
 }
-.card:hover {
+#productsList .card:hover {
   transform: scale(1.01);
 }
 
