@@ -51,18 +51,18 @@
                         <div class="col-xl-6 card-body">
                             <h1 class="card-title" id="productName">Zurss 50S</h1>
                             <p class="card-text" id="productDescription">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                            <select class="form-select w-50">
+                            <select class="form-select w-50" id="productOptions">
                                 <option selected>Lentilles</option>
-                                <option value="35mm 1.4">35mm 1.4</option>
-                                <option value="50mm 1.6">50mm 1.6</option>
-                                <option value=""></option>
+                                <option id="productOption1" value="35mm 1.4">35mm 1.4</option>
+                                <option id="productOption2" value="50mm 1.6">50mm 1.6</option>
+                                <option id="productOption3" value=""></option>
                             </select>
-                            <select class="form-select w-50 mt-3">
-                                <option selected>Quantité</option>
-                                <option value="1">1</option>
-                                <option value="2">2</option>
-                                <option value="3">3</option>
-                            </select>
+                            <form class="mt-2">
+                                <div class="form-row w-25">
+                                  <label for="quantity">Quantité</label>
+                                  <input type="number" class="form-control" id="quantity" min="1">
+                                </div>
+                            </form>
                             <div class="card-text mt-4"><strong>499,00€</strong></div>
                             <a class="btn btn-primary shadow-lg-danger mt-4" id="addProductToBasket" href="basket.html" role="button">Ajouter au panier</a>
                         </div>
@@ -91,6 +91,7 @@
                             <li class="list-inline-item"><a class="text-decoration-none" href="mailto:adressemail.orinoco@mail.com">Contact</a></li>
                             <li class="list-inline-item">&middot;</li>
                             <li class="list-inline-item"><a class="text-decoration-none" href="#">Conditions d'utilisations</a></li>
+                        </ul>
                     </div>
                     <p class="text-center">Orinoco © 2021 ZyrthazZ</p>
                 </div>
