@@ -1,3 +1,3 @@
-Faire la page product, la page basket et la page confirmation
+Faire la page confirmation
 
 Faire le Javascript
