@@ -10,6 +10,8 @@
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
         <link rel="stylesheet" href="css/main.css">
         
+        <script src="js/index.js"></script>
+        
         <title>Orinoco</title>
         
         </head>
@@ -91,65 +93,20 @@
             </div>
             
             <!--Présentation des différents produits-->
-            <section class="m-5" id="products">
-                <div class="row" id="productsList">
+            <section class="row m-5" id="products">
+                <template id="templateProduct">
                     <div class="col-md-6 col-xl-4">
                         <div class="card mb-5 shadow p-3 mb-5 bg-white rounded">
-                            <img class="card-img-top p-3" id="productImg" src="../back_end/images/vcam_1.jpg" alt="Modèle appareil photo Zurss 50S"/>
+                            <img class="card-img-top p-3" id="product__img" src="" alt=""/>
                             <div class="card-body">
-                                <h5 class="card-title" id="productName">Zurss 50S</h5>
-                                <p class="card-text" id="productDescription">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                                <p class="card-text" id="productPrice"><strong>499,00€</strong></p>
+                                <h5 class="card-title" id="product__name"></h5>
+                                <p class="card-text" id="product__description"></p>
+                                <p class="card-text"><strong id="product__price"></strong></p>
                                 <a class="btn btn-primary stretched-link shadow-lg-danger" href="pages/product.html" role="button">Voir le produit</a>
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-6 col-xl-4">
-                        <div class="card mb-5 shadow p-3 mb-5 bg-white rounded">
-                            <img class="card-img-top p-3" id="productImg" src="../back_end/images/vcam_2.jpg" alt="Modèle appareil photo Hirsch 400DTS"/>
-                            <div class="card-body">
-                                <h5 class="card-title" id="productName">Hirsch 400DTS</h5>
-                                <p class="card-text" id="productDescription">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                                <p class="card-text" id="productPrice"><strong>3099,00€</strong></p>
-                                <a class="btn btn-primary stretched-link shadow-lg-danger" href="pages/product.html" role="button">Voir le produit</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-xl-4">
-                        <div class="card mb-5 shadow p-3 mb-5 bg-white rounded">
-                            <img class="card-img-top p-3" id="productImg" src="../back_end/images/vcam_3.jpg" alt="Modèle appareil photo Franck JS 105"/>
-                            <div class="card-body">
-                                <h5 class="card-title" id="productName">Franck JS 105</h5>
-                                <p class="card-text" id="productDescription">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                                <p class="card-text" id="productPrice"><strong>2099,00€</strong></p>
-                                <a class="btn btn-primary stretched-link shadow-lg-danger" href="pages/product.html" role="button">Voir le produit</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-xl-4">
-                        <div class="card mb-5 shadow p-3 mb-5 bg-white rounded">
-                            <img class="card-img-top p-3" id="productImg" src="../back_end/images/vcam_4.jpg" alt="Modèle appareil photo Kuros TTS"/>
-                            <div class="card-body">
-                                <h5 class="card-title" id="productName">Kuros TTS</h5>
-                                <p class="card-text" id="productDescription">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                                <p class="card-text" id="productPrice"><strong>1599,00€</strong></p>
-                                <a class="btn btn-primary stretched-link shadow-lg-danger" href="pages/product.html" role="button">Voir le produit</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-xl-4">
-                        <div class="card mb-5 shadow p-3 mb-5 bg-white rounded">
-                            <img class="card-img-top p-3" id="productImg" src="../back_end/images/vcam_5.jpg" alt="Modèle appareil photo Katatone"/>
-                            <div class="card-body">
-                                <h5 class="card-title" id="productName">Katatone</h5>
-                                <p class="card-text" id="productDescription">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                                <p class="card-text" id="productPrice"><strong>599,00€</strong></p>
-                                <a class="btn btn-primary stretched-link shadow-lg-danger" href="pages/product.html" role="button">Voir le produit</a>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
+                </template>
             </section>
             
             
@@ -186,7 +143,7 @@
             $(document).ready(function(){
                $("#searchInput").on("keyup", function() {
                   var value = $(this).val().toLowerCase();
-                  $("#productsList .col-md-6").filter(function() {
+                  $("#products .col-md-6").filter(function() {
                      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
                   });
                });
