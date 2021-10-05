@@ -32,19 +32,28 @@ function getProducts() {
 
 
 /**
+    Fonction permettant de diviser par 100 les prix pour en enlever les décimales et de rajouter le symbole €
+ */
+function showPrices(val) {
+    return val / 100 + " €"
+}
+
+/**
     Fonction permettant d'afficher les informations de l'API dans la page, en remplaçant les id de index.html
     Utilisation de template sur la page html pour minimer les failles de sécurité et pour avoir un code plus lisible
  */
 function displayProducts() {
-    const templateElt = document.getElementById("templateProduct")
-    const cloneElt = document.importNode(templateElt.content, true)
+    const templateElt = document.getElementById("templateProduct") //Récupère le template présent dans le HTML
+    const cloneElt = document.importNode(templateElt.content, true) //Clone ce template
     
+    //Envoie les données récupérées dans l'API directement dans le DOM aux #id correspondants
     cloneElt.getElementById("product__name").textContent = product.name
     cloneElt.getElementById("product__description").textContent = product.description
-    cloneElt.getElementById("product__price").textContent = product.price
+    cloneElt.getElementById("product__price").textContent = showPrices(product.price)
     cloneElt.getElementById("product__img").src = product.imageUrl
     cloneElt.getElementById("product__img").alt = "Modèle appareil photo" + product.name
      
-    document.getElementById("products").appendChild(cloneElt)
+    document.getElementById("products").appendChild(cloneElt) //Affiche les templates clonés en enfant de l'élément indiqué
 }
+
 

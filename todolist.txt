@@ -1,4 +1,4 @@
 HTML = Faire la page confirmation
 
-Javascript = - Trouver un moyen d'ajouter une virgule aux prix des produits
+Javascript = - Trouver un moyen d'afficher une virgule aux prix des produits (opptionnel)
              - Faire le JS de la page product
