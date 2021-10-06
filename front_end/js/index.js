@@ -4,7 +4,7 @@ main () //Éxécute la fonction main
     Fonction principale de la page, va appaler les différentes fonctions
  */
 async function main() {
-    const products = await getProducts();
+    const products = await getProduct();
     
     console.log(products)
     
@@ -13,30 +13,6 @@ async function main() {
     }
 }
 
-/**  
-    Fonction fetch permettant de recevoir par l'API les différents produits
-*/
-
-function getProducts() {
-    return fetch("http://localhost:3000/api/cameras")
-        .then(function(res) {
-            return res.json();
-        })
-        .then(function (products) {
-            return products;
-        })
-        .catch(function (err) {
-            alert(error);
-        })
-}
-
-
-/**
-    Fonction permettant de diviser par 100 les prix pour en enlever les décimales et de rajouter le symbole €
- */
-function showPrices(val) {
-    return val / 100 + " €"
-}
 
 /**
     Fonction permettant d'afficher les informations de l'API dans la page, en remplaçant les id de index.html
@@ -52,6 +28,7 @@ function displayProducts() {
     cloneElt.getElementById("product__price").textContent = showPrices(product.price)
     cloneElt.getElementById("product__img").src = product.imageUrl
     cloneElt.getElementById("product__img").alt = "Modèle appareil photo" + product.name
+    cloneElt.getElementById("product__link").href += `?_id=${product._id}`
      
     document.getElementById("products").appendChild(cloneElt) //Affiche les templates clonés en enfant de l'élément indiqué
 }

@@ -2,3 +2,7 @@ HTML = Faire la page confirmation
 
 Javascript = - Trouver un moyen d'afficher une virgule aux prix des produits (opptionnel)
              - Faire le JS de la page product
+             
+             Basket : créer un localstorage // créer une clef qui renverra un array contenant tous les produits du panier
+             addItem
+             removeItem
