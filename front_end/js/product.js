@@ -24,6 +24,22 @@ function displayProduct(product) {
     document.getElementById("product__price").textContent = showPrices(product.price)
     document.getElementById("product__img").src = product.imageUrl
     document.getElementById("product__img").alt = "Modèle appareil photo" + product.name
-
-    //Compléter ici
+    
+    //Déclaration de la variable définissant les choix de lentilles pour le produit, rattaché à l'élément select #product__options
+    const lenses__choice = document.getElementById("product__options");
+    
+    
+    //Boucle for permettant de passer sur chaque donnée de lenses dans l'API 
+    
+    //Ici la boucle déclare que i commence à 0, et que tant que i est inférieur à la *
+    //longueur du array [lenses] dans l'API, i sera augmenté de 1
+    for (i = 0; i < product.lenses.length; i++) {
+        //Déclaration de "option", un élément qui sera intégré dans le html
+        const option = document.createElement("option");
+        //Remplissage de l'option nommée juste avant avec une donnée de [lenses], jusqu'à la fin de celui-ci
+        option.textContent = product.lenses[i];
+        //Envoie de la variable "option" à lenses__choice dans le html
+        lenses__choice.appendChild(option);
+    }
 }
+
