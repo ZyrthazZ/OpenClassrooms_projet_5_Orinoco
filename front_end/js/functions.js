@@ -5,6 +5,7 @@ function showPrices(val) {
     return val / 100 + " €"
 }
 
+
 //Permet d'aller chercher les données dans l'API en fonction du produit demandé
 function getProduct(productId="") {
     return fetch(`http://localhost:3000/api/cameras/${productId}`)

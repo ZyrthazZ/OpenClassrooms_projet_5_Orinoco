@@ -13,7 +13,6 @@ async function main() {
     }
 }
 
-
 /**
     Fonction permettant d'afficher les informations de l'API dans la page, en remplaçant les id de index.html
     Utilisation de template sur la page html pour minimer les failles de sécurité et pour avoir un code plus lisible
