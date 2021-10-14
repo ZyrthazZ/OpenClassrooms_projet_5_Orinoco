@@ -55,7 +55,15 @@ function displayProductPage(product) {
                 }
                             
                 let basketContent = JSON.parse(localStorage.getItem("produit"))
-                console.log("viva l'algérie", basketContent)
+                console.log("basketContent", basketContent)
+                
+                //Fonction ajoutant le produit au localStorage : *
+                //le produit est envoyé dans le [array] basketContent, puis ce array est envoyé dans le localStorage *
+                //cela permet de stocker plusieurs produits dans le localStorage *
+                function addProductInLocalStorage() {
+                    basketContent.push(productInBasket)
+                    localStorage.setItem("produit", JSON.stringify(basketContent))
+                }
                 
                 //S'il y a déja des produits enregistrés dans le local storage 
                 if(basketContent) {
@@ -64,17 +72,15 @@ function displayProductPage(product) {
                             // iF YES, get quantity and add it to existing
                           
                         // 2.  if no
+                        /*if(product.name == productInBasket.name && productInBasket.lenses) {
+                        }*/
                             
-                    basketContent.push(productInBasket)
-                    localStorage.setItem("produit", JSON.stringify(basketContent))
-    
+                    addProductInLocalStorage()
                 }
                 //S'il n'y a pas de produits enregistrés dans le local storage
                 else {
                     basketContent = [];
-                    basketContent.push(productInBasket);
-                    localStorage.setItem("produit", JSON.stringify(basketContent))
-    
+                    addProductInLocalStorage()
                 }
         
             });
