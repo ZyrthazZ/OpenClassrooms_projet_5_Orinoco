@@ -19,3 +19,7 @@ function getProduct(productId="") {
         alert(error);
     })
 }
+
+//Déclaration de la variable basketContent qui contient les objets avec les keys et values du localStorage
+const basketContent = JSON.parse(localStorage.getItem("produit")) || [];
+console.log("basketContent", basketContent)

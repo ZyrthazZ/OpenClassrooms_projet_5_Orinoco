@@ -54,9 +54,6 @@ function displayProductPage(product) {
                     img : product.imageUrl
                 }
                             
-                let basketContent = JSON.parse(localStorage.getItem("produit"))
-                console.log("basketContent", basketContent)
-                
                 //Fonction ajoutant le produit au localStorage : *
                 //le produit est envoyé dans le [array] basketContent, puis ce array est envoyé dans le localStorage *
                 //cela permet de stocker plusieurs produits dans le localStorage *
@@ -65,32 +62,49 @@ function displayProductPage(product) {
                     localStorage.setItem("produit", JSON.stringify(basketContent))
                 }
                 
+                
                 //S'il y a déja des produits enregistrés dans le local storage 
                 if(basketContent) {
-                    //  Check if product exist already
-                        //1. if product.name == productInBasket.name && prodcut.lenses === productInBasket.lenses  exist .
-                            // iF YES, get quantity and add it to existing
-                          
-                        // 2.  if no
-                        /*if(product.name == productInBasket.name && productInBasket.lenses) {
-                        }*/
-                            
-                    addProductInLocalStorage()
-                }
-                //S'il n'y a pas de produits enregistrés dans le local storage
+                    const inHere = basketContent.find((el) => el.id === product._id)
+                    if(inHere) {
+                        console.log("already in here")
+                        productInBasket.quantity = ++inHere.quantity;
+                        //Ici on ne peut pas appeler la fonction addProductInLocalStorage car elle envoie le [array] dans le localStorage *
+                        //alors qu'il y est déjà dû à la condition else plus bas, ce qui duplique les [array] et donc les produits dans le panier
+                        localStorage.setItem("produit", JSON.stringify(basketContent))
+                        console.log("coucou", inHere.quantity) 
+                    }
+                    
+                //S'il n'y a aucun produit enregistré dans le localStorage
                 else {
-                    basketContent = [];
+                    console.log("gonna add it")
+                    //Appel de la fonction pour ajouter un produit au [basketContent] puis pour envoyer [array] au localStorage
                     addProductInLocalStorage()
+                    }
                 }
-        
+                
+                
             });
-            
+                
                     
             //---------------------Bouton Magique pour tout vider lol---------------------------------
             //localStorage.clear()
             //
+            
     
 }
-        
+
+
+
+
+
+
+
+
+
+
+
+
+
         
 
