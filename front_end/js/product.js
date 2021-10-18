@@ -49,7 +49,7 @@ function displayProductPage(product) {
                     name : product.name,
                     description : product.description,
                     price : product.price,
-                    lenses : lenses_Choosed.value,
+                    option : lenses_Choosed.value,
                     quantity : quantity.value,
                     img : product.imageUrl
                 }
@@ -62,19 +62,18 @@ function displayProductPage(product) {
                     localStorage.setItem("produit", JSON.stringify(basketContent))
                 }
                 
-                
                 //S'il y a déja des produits enregistrés dans le local storage 
                 if(basketContent) {
-                    const inHere = basketContent.find((el) => el.id === product._id)
+                    //Cherche dans le locaStorage si un produit a le même id et la même option de sélectionné
+                    const inHere = basketContent.find((el) => el.id === productInBasket.id && el.option === productInBasket.option)
                     if(inHere) {
                         console.log("already in here")
-                        productInBasket.quantity = ++inHere.quantity;
+                        //Incrémente à la quantité existante de inHere la nouvelle quantité demandée par l'utilisateur sur la page produit
+                        inHere.quantity = +inHere.quantity+ +productInBasket.quantity
                         //Ici on ne peut pas appeler la fonction addProductInLocalStorage car elle envoie le [array] dans le localStorage *
                         //alors qu'il y est déjà dû à la condition else plus bas, ce qui duplique les [array] et donc les produits dans le panier
                         localStorage.setItem("produit", JSON.stringify(basketContent))
-                        console.log("coucou", inHere.quantity) 
                     }
-                    
                 //S'il n'y a aucun produit enregistré dans le localStorage
                 else {
                     console.log("gonna add it")
@@ -82,16 +81,11 @@ function displayProductPage(product) {
                     addProductInLocalStorage()
                     }
                 }
-                
-                
             });
                 
-                    
-            //---------------------Bouton Magique pour tout vider lol---------------------------------
+            //---------------------Bouton Magique pour tout vider---------------------------------
             //localStorage.clear()
             //
-            
-    
 }
 
 

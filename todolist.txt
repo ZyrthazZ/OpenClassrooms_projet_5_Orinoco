@@ -1,11 +1,6 @@
 HTML = Faire la page confirmation
 
-Javascript = - Sur la page product, créer l'algorithme pour ajouter un produit 
-                au panier seulement si il n'est pas présent dans celui-ci
+Javascript = 
+                - Sur la page basket, afficher les produits du localstorage 
                 
-            - Sur la page basket, afficher les produits du localstorage 
-             
-            
-             
-             
              
