@@ -1,12 +1,19 @@
 main () //Éxécute la fonction main
 
 /**
-    Fonction principale de la page, va appaler les différentes fonctions
+    Fonction principale de la page, va appeler les différentes fonctions
  */
+
+    const testUn = document.getElementById("products")
+    console.log("test1", testUn)
+
 async function main() {
     const products = await getProduct();
     
-    console.log(products)
+    console.log("APIproducts", products)
+    
+    const testDeux = document.getElementById("products")
+    console.log("test2", testDeux)
     
     for (product of products) {
         displayProducts(products)

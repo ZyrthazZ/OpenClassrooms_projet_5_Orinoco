@@ -1,6 +1,10 @@
 HTML = Faire la page confirmation
 
 Javascript = 
-                - Sur la page basket, afficher les produits du localstorage 
+                - Sur la page basket, créer des fonctions pour que les boutons (add1, remove1, clear) fonctionnent
                 
              
+            Affichage console.log d'une div : impossible, valeur null
+            
+            Affichage seulement possible lorsque await donc async est présent ==> problématique posée au mentor, très surpris de cela. 
+            En attente d'un retour de sa part
