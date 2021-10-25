@@ -24,3 +24,9 @@ function getProduct(productId="") {
 const basketContent = JSON.parse(localStorage.getItem("produit")) || [];
 console.log("basketContent", basketContent)
 
+
+//Création de la fonction permettant de vider le localStorage
+function clearBasket(){
+    localStorage.clear()
+}
+
