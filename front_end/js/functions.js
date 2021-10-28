@@ -25,8 +25,25 @@ const basketContent = JSON.parse(localStorage.getItem("produit")) || [];
 console.log("basketContent", basketContent)
 
 
-//Création de la fonction permettant de vider le localStorage
-function clearBasket(){
-    localStorage.clear()
+
+function removeItemFromBasket(){
+    event.preventDefault();
+    //On va chercher la valeur key sur l'élément du html pour cibler le bon produit du [basketContent]
+    let key = event.target.parentElement.dataset.remove;
+    //Utilisation de .splice sur le [basketContent] : permet de supprimer ou d'ajouter des items dans le [array] *
+    //Ici on supprime un item : 
+    //Avec la valeur de key qui correspond à la place du produit visé dans [basketContent], on va cibler cet indice du [array] et *
+    //demander à supprimer 1 élément, celui en question
+    basketContent.splice(key, 1)
+    //On renvoie le nouveau [basketContent] dans le localStorage
+    localStorage.setItem("produit", JSON.stringify(basketContent))
+    //Recharge la page
+    location.reload();
 }
 
+//Création de la fonction permettant de vider le localStorage
+function clearBasket(){
+    event.preventDefault()
+    localStorage.clear()
+    location.reload()
+}

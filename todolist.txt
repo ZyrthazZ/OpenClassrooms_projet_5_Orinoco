@@ -1,10 +1,8 @@
 HTML = Faire la page confirmation
 
 Javascript = 
-                - Sur la page basket, créer des fonctions pour que les boutons (add1, remove1, clear) fonctionnent
+                - Sur la page basket, reste le bouton add1ProductToBasket à faire 
+                - Créer le formulaire
                 
              
-            Affichage console.log d'une div : impossible, valeur null
-            
-            Affichage seulement possible lorsque await donc async est présent ==> problématique posée au mentor, très surpris de cela. 
-            En attente d'un retour de sa part
+            Affichage console.log d'une div : impossible, valeur null //Résolu : les scripts JS étaient en haut de la page html, ce qui empêchait la console d'avoir toute les données
