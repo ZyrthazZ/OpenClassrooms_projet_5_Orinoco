@@ -1,8 +1,8 @@
 HTML = Faire la page confirmation
 
 Javascript = 
-                - Sur la page basket, reste le bouton add1ProductToBasket à faire 
-                - Créer le formulaire
+                - Afficher le total du panier
+                - Créer le formulaire sur basket.js
                 
              
             Affichage console.log d'une div : impossible, valeur null //Résolu : les scripts JS étaient en haut de la page html, ce qui empêchait la console d'avoir toute les données

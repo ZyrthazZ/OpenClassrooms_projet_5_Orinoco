@@ -51,9 +51,9 @@ function displayBasket(){
                 </button>
                 
                 <input class="cart-quantity-input quantity w-25" type="number" id="product__quantity" name="quantity" value="${basketContent[j].quantity}">
-                <button class="btn add1ToBasket" type="button" aria-hidden="true" data-add="add-${j}">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="green" class="bi bi-plus-circle" viewBox="0 0 16 16">
-                        <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                <button class="btn add1ToBasket" type="button" aria-hidden="true" data-id="${basketContent[j].id}" data-add="${j}" data-option="${basketContent[j].option}">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="green" class="bi bi-plus-circle" viewBox="0 0 16 16" data-id="${basketContent[j].id}" data-add="${j}" data-option="${basketContent[j].option}">
+                        <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" data-id="${basketContent[j].id}" data-add="${j}" data-option="${basketContent[j].option}"/>
                         <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
                     </svg>
                 </button>
@@ -77,7 +77,7 @@ function displayBasket(){
     }
     
 
-    //Bouton add 1
+    //Bouton deduct 1
     
     //Relie le bouton du html à sa const. Utilisation d'une class et non d'un id pour ce bouton car il y en plusieurs sur la page *
     //(1 par article). Si un id est appelé, seul le premier sera appelé étant donné qu'un id est unique
@@ -99,15 +99,15 @@ function displayBasket(){
                 //Déclare l'"id", qui est rattaché au produit afin de l'utiliser plus loin
                 let id = event.target.parentElement.dataset.id;
                 console.log("id", id);
-                //Déclare l'"option", qui est rattaché au produit afin de l'utiliser plus loin
+                //Déclare l'"option", qui est rattachée au produit afin de l'utiliser plus loin
                 let option = event.target.parentElement.dataset.option;
                 console.log("option", option)
                 
-                //Déclare la const servant à selectionner tous les buttons de la page contenant "data-key", ce qui revient à sélectionner tous les buttons *
-                //remove1FromBasket et add1ToBasket
+                //Déclare la const servant à selectionner tous les buttons de la page contenant "data-remove", ce qui revient à sélectionner tous les buttons *
+                //remove1FromBasket
                 let deductBtns = document.querySelectorAll('button[data-deduct]');
                 console.log("deductBtns", deductBtns)
-                //Boucle itérant sur chaque bouton remove1FromBasket et add1ToBasket
+                //Boucle itérant sur chaque bouton remove1FromBasket
                 deductBtns.forEach(deductBtn => {
                     console.log("deductBtn", deductBtn);
                     console.log("deductBtn.dataset", deductBtn.dataset.deduct);
@@ -151,7 +151,65 @@ function displayBasket(){
             }
         }
         
+        
+        
+    //Bouton add 1
     
+    //Relie le bouton du html à sa const. Utilisation d'une class et non d'un id pour ce bouton car il y en plusieurs sur la page *
+    //(1 par article). Si un id est appelé, seul le premier sera appelé étant donné qu'un id est unique
+    let addBtnArr = document.getElementsByClassName('add1ToBasket');
+    console.log('add btn here: ', addBtnArr);
+    
+    //Boucle for permettant d'itérer sur tous les boutons addBtnArr de la page 
+    for(let addBtn of addBtnArr){
+        //addEventListener sur le click de ce bouton 
+        addBtn.onclick = (event) => {
+            event.preventDefault();
+            console.log("1", event.target);
+            console.log("2", event.target.parentElement);
+            
+            //Déclare la "key", c'est à dire la déclaration de la place du produit dans le array basketContent (le 1er produit est à 0, puis 1 etc. Important pour cibler)
+            let key = event.target.parentElement.dataset.add;
+            console.log("key", key);
+            
+            //Déclare l'"id", qui est rattaché au produit afin de l'utiliser plus loin
+            let id = event.target.parentElement.dataset.id;
+            console.log("id", id);
+            //Déclare l'"option", qui est rattachée au produit afin de l'utiliser plus loin
+            let option = event.target.parentElement.dataset.option;
+            console.log("option", option)
+            
+            //Déclare la const servant à selectionner tous les buttons de la page contenant "data-add", ce qui revient à sélectionner tous les buttons 
+            //add1ToBasket
+            let addBtns = document.querySelectorAll('button[data-add]');
+            console.log("addBtns", addBtns)
+            //Boucle itérant sur chaque bouton add1ToBasket
+            addBtns.forEach(addBtn => {
+                console.log("addBtn", addBtn);
+                console.log("addBtn.dataset", addBtn.dataset.add);
+                //If vérifiant si la key dataset du bouton et la key de celui-ci sont les mêmes afin de s'assurer de cibler le bon produit dans le array
+                if(addBtn.dataset.add == key) {
+                    console.log("IN HERE");
+                    //déclare la variable currentInputBox pour la rattacher à l'input voisin de addBtn
+                    let currentInputBox = addBtn.previousElementSibling;
+                    console.log("currentInputBox value is :" + currentInputBox.value);
+                        //Lors de l'appui sur le bouton, augmente la valeur de currentInputBox de 1
+                        currentInputBox.value =  ++currentInputBox.value;
+                        // Va envoyer le produit dans le localStorage
+                        for(basket of basketContent) {
+                            if(basket.id === id && basket.option === option){
+                                basket.quantity = currentInputBox.value;
+                                localStorage.setItem("produit", JSON.stringify(basketContent))
+                                location.reload();
+                            }
+                        }
+                }
+            })
+            console.log("addBtns", addBtns);
+        }
+    }
+
+        
     //Bouton deleteItem
     const btnRemoveProductFromBasketArr = document.getElementsByClassName("removeProductFromBasket")
     //Boucle for itérant sur tous les boutons "removeProductFromBasket" du html 

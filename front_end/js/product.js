@@ -15,8 +15,6 @@ function getProductId() {
 
 
 function displayProductPage(product) {
-                const one = document.getElementById("blabla")
-                console.log("coucou", one)
             //Envoie dynamiquement les données du produit sur la page de celui-ci, en fonction de son Id
             function displayProduct(product) {
                 document.getElementById("product__name").textContent = product.name
