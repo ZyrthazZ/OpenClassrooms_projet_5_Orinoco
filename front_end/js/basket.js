@@ -35,40 +35,49 @@ function displayBasket(){
         //ajouter les éléments du basketContent dynamiquement
         for(j = 0; j < basketContent.length; j++){
             arrayBasketStructure = arrayBasketStructure + `
-            <div class="d-flex justify-content-between p-3 rounded" >
-                <img class="rounded d-block d-md-none" id="product__img" src="${basketContent[j].img}" alt="Modèle appareil photo Zurss 50S" width="100" height="100">
-                <img class="rounded d-none d-md-block" id="product__img" src="${basketContent[j].img}" alt="Modèle appareil photo Zurss 50S" width="200">
-            <div class="d-flex flex-column align-items-center pt-4">
-                <h3 id="product__name">${basketContent[j].name}</h3>
+            <div class="d-flex justify-content-between p-1 rounded" >
+                <img class="rounded d-block d-md-none" id="product__img" src="${basketContent[j].img}" alt="Modèle appareil photo ${basketContent[j].name}" width="100" height="100">
+                <img class="rounded d-none d-md-block" id="product__img" src="${basketContent[j].img}" alt="Modèle appareil photo ${basketContent[j].name}" width="200">
+            <div class="d-flex flex-column align-items-center">
+                <h6 class="d-block d-md-none" id="product__name">${basketContent[j].name}</h6>
+                <h5 class="d-none d-md-block" id="product__name">${basketContent[j].name}</h5>
                 <p id="product__option">${basketContent[j].option}</p>
             </div>
             <div class="d-flex flex-row align-items-center">
                 <button class="btn remove1FromBasket" type="button" aria-hidden="true" data-id="${basketContent[j].id}" data-deduct="${j}" data-option="${basketContent[j].option}">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="red" class="bi bi-x-circle" viewBox="0 0 16 16" data-id="${basketContent[j].id}" data-deduct="${j}" data-option="${basketContent[j].option}">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18 " fill="red" class="bi bi-x-circle" viewBox="0 0 16 16" data-id="${basketContent[j].id}" data-deduct="${j}" data-option="${basketContent[j].option}">
                         <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" data-id="${basketContent[j].id}" data-deduct="${j}" data-option="${basketContent[j].option}"/>
                         <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
                     </svg>
                 </button>
-                
-                <input class="cart-quantity-input quantity w-25" type="number" id="product__quantity" name="quantity" value="${basketContent[j].quantity}">
+
+                <input class="cart-quantity-input quantity d-none" type="number" id="product__quantity" name="quantity" value="${basketContent[j].quantity}">
+
                 <button class="btn add1ToBasket" type="button" aria-hidden="true" data-id="${basketContent[j].id}" data-add="${j}" data-option="${basketContent[j].option}">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="green" class="bi bi-plus-circle" viewBox="0 0 16 16" data-id="${basketContent[j].id}" data-add="${j}" data-option="${basketContent[j].option}">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18 " fill="green" class="bi bi-plus-circle" viewBox="0 0 16 16" data-id="${basketContent[j].id}" data-add="${j}" data-option="${basketContent[j].option}">
                         <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" data-id="${basketContent[j].id}" data-add="${j}" data-option="${basketContent[j].option}"/>
                         <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
                     </svg>
                 </button>
-                <h5 class="pt-2" id="product__quantity">${basketContent[j].quantity}</h5>
+                
+                <span class="pt-2" id="product__quantity">${basketContent[j].quantity}</span>
+                
             </div>
             <div class="d-flex flex-row align-items-center">
-                <p class="pt-3" ><strong id="product__price">${showPrices(basketContent[j].price)}</strong></p>
+                <p class="pt-3 d-block d-md-none" id="product__price">${showPrices(basketContent[j].price)}</p>
+                <p class="pt-3 d-none d-md-block"><strong id="product__price">${showPrices(basketContent[j].price)}</strong></p>
             </div>
             <div class="d-flex flex-row align-items-center">
                 <button class="btn removeProductFromBasket" type="button" aria-hidden="true" data-remove="${j}">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="red" class="bi bi-trash" viewBox="0 0 16 16" data-remove="${j}">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="32" fill="red" class="bi bi-trash" viewBox="0 0 16 16" data-remove="${j}">
                         <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z" data-remove="${j}"/>
                         <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
                     </svg>
                 </button>
+            </div>
+            <div class="d-flex flex-column align-items-center pt-4">
+                <h6>Sous-Total</h6>
+                <p>${showPrices(basketContent[j].quantity * basketContent[j].price)}</p>
             </div>
             </div>`;
         }
@@ -76,6 +85,8 @@ function displayBasket(){
         productsInBasket.innerHTML = arrayBasketStructure;
     }
     
+    
+    //Boutons add, deduct, remove et clear
 
     //Bouton deduct 1
     
@@ -221,6 +232,7 @@ function displayBasket(){
     }
     
     
+    
     //Bouton "clear"
     //Relie le bouton du html à sa const
     const buttonClearBasket = document.getElementById("clearBasket")
@@ -230,7 +242,26 @@ function displayBasket(){
         clearBasket()
     })
     
+    
+    //Affichage du totalPrice
+    
+    calculateTotalPrice()
+    
 }//Fin de la fonction displayBasket
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 //Pour le moment fonction inutilisée, peut être implantée plus tard

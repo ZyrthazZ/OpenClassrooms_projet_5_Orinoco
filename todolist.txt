@@ -1,7 +1,6 @@
 HTML = Faire la page confirmation
 
 Javascript = 
-                - Afficher le total du panier
                 - Créer le formulaire sur basket.js
                 
              

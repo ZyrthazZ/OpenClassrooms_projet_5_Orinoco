@@ -47,3 +47,29 @@ function clearBasket(){
     localStorage.clear()
     location.reload()
 }
+
+    //Calcul du totalPrice
+    
+    function calculateTotalPrice() {
+        let totalPrice = 0;
+        //Va aller sur chaque élément produit du [basketContent]
+        basketContent.forEach((produit) => {
+            //Pour chaque produit, calcul le totalPrice en multipliant le prix et la quantité du produit 
+            //Sur chaque nouvel élément trouvé par la fonction (produit), le montant trouvé pour l'élément précédent y est additionné
+            //Par exemple, on peut le voir avec le console log ci dessous :
+            //Si on a 1 produit à 499€ en 3 exemplaires, 1 produit à 1599€ en 2 exemplaires et 1 produit à 599€ en 1 exemplaire , *
+            //Le console log va afficher : 
+            /*
+            totalPrice 1497€
+            totalPrice 4695€
+            totalPrice 5294€
+            */
+           //Le dernier console.Log correspond au prix total des produits
+            totalPrice = totalPrice + produit.quantity * produit.price;
+            console.log("totalPrice", totalPrice)
+        });
+        //Relie le totalInBasket à son élément en html
+        const totalInBasket = document.getElementById("totalPrice");
+        //Injecte le résultat trouvé plus haut dans le html en le mettant au format des prix du site à l'aide de la fonction showPrices()
+        totalInBasket.innerHTML += `${showPrices(totalPrice)}`;
+    }
