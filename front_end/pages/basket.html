@@ -7,6 +7,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <link rel="shortcut icon" type="image/png" href="favicon.jpg">
         
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
         <link rel="stylesheet" href="../css/main.css">
         
         <title>Orinoco</title>
@@ -108,15 +109,26 @@
                             </div>
                         </div>
                     </div>
+                    <!--Bouton de validation du panier-->
+                    <div class="col d-flex justify-content-end">
+                        <button role="btn" class="btn btn-success shadow-lg-primary mt-4" id="validateBasket">Valider Panier</button>
+                    </div>
                 </div>
             </section>
+            
+            
             <!--SECTION retourner voir les produits-->
-            <section class="mt-5">
+            <section class="mt-5" id="backToProducts"><!--Section à faire potentiellement disparaître quand apparaît le formulaire???-->
                 <div class="container">
-                    <a class="text-decoration-none" href="../index.html"><h3 class="text-primary py-2">Retourner voir les produits</h3></a>
+                    <a class="text-decoration-none" href="../index.html"><h3 class="text-primary py-2 d-inline-flex">Retourner voir les produits</h3></a>
                 </div>
             </section>
-
+            
+            <section id="formBasket">
+                <!--À partir d'ici, le code sera injecté dans le html avec le JavaScript-->
+                <!--Fin de l'injection du code html par le JavaScript-->
+            </section>
+            
         </main>
         
         <!--FOOTER-->

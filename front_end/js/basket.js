@@ -1,11 +1,9 @@
 //Fonction globale de la page permettant de lancer toutes les fonctions de celle-ci
 (async function () {
-    //Promise (qui ici n'envoie pas de données utile) mais permettant d'utiliser les console.log directement *
-    //dans le DOM du HTML
-    await fetch(``)
-
    
     displayBasket()
+    
+    displayForm()
 })()
 
 
@@ -250,6 +248,72 @@ function displayBasket(){
 }//Fin de la fonction displayBasket
 
 
+//Fonction displayForm(), qui va gérer tout ce qui est lié à l'affichage du formulaire sur la page basket
+function displayForm(){
+    //Fonction permettant d'injecter le formulaire dans le html
+    function injectForm(){
+        //Relie le html au javascript
+        const formBasket = document.getElementById("formBasket")
+        
+        //Ajoute le html
+        formBasket.innerHTML = `
+        <div class="container my-5">
+        <form>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="firstname">Prénom</label>
+                    <input type="name" class="form-control" id="firstname" placeholder="Jean">
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="lastname">Nom</label>
+                    <input type="name" class="form-control" id="lastname" placeholder="Valjean">
+                </div>
+            </div>
+                <div class="form-group">
+                    <label for="email">Adresse Mail</label>
+                    <input type="" class="form-control" id="email" placeholder="jean.valjean@les-miserables.com">
+                    <small class="form-text text-muted" id="emailHelp">Nous ne partagerons jamais votre adresse mail avec Jafer</small>
+                </div>
+                <div class="form-group">
+                    <label for="adress">Adresse</label>
+                    <input type="" class="form-control" id="adress" placeholder="1862 place des Thénardiers">
+                </div>
+            <div class="form-row">
+                <div class="form-group col-md-4">
+                    <label for="town">Ville</label>
+                    <input type="" class="form-control" id="town" placeholder="Paris">
+                </div>
+                <div class="form-group col-md-4">
+                    <label for="country">Pays</label>
+                    <input type="" class="form-control" id="country" placeholder="France">
+                </div>
+                <div class="form-group col-md-4">
+                    <label for="postalcode">Code Postal</label>
+                    <input type="" class="form-control" id="postalcode" placeholder="75000">
+                </div>
+            </div>
+        </form>
+    </div>
+    `
+    }//Fin de la function injectForm()
+    
+    //Bouton validateBasket
+    //Relie le bouton du html au javascript
+    const btnValidateBasket = document.getElementById("validateBasket")
+    
+    //Ajoute un addEventListener sur le click du bouton
+    btnValidateBasket.addEventListener("click", (event) => {
+        event.preventDefault;
+        //Appelle la function injectForm() pour afficher le formulaire
+        injectForm()
+        
+        //Relie le lien backToProducts du html au javascript
+        const backToProducts = document.getElementById("backToProducts")
+        //Fais disparaître le lien backToProducts lors du click sur le bouton, donc lors de l'affichage du formulaire
+        backToProducts.classList.add("d-none");
+    })
+    
+}//Fin de la function displayForm()
 
 
 
