@@ -293,25 +293,106 @@ function displayForm(){
                 </div>
             </div>
         </form>
-    </div>
-    `
+        </div>
+        `
     }//Fin de la function injectForm()
     
     //Bouton validateBasket
     //Relie le bouton du html au javascript
     const btnValidateBasket = document.getElementById("validateBasket")
+    const btnValidateCommand = document.getElementById("validateCommand")
+    console.log("btnValidateCommand", btnValidateCommand)
     
     //Ajoute un addEventListener sur le click du bouton
     btnValidateBasket.addEventListener("click", (event) => {
         event.preventDefault;
         //Appelle la function injectForm() pour afficher le formulaire
         injectForm()
+        //Fait disparaître le button btnValidateBasket après le click
+        btnValidateBasket.classList.add("d-none")
+        //Fait apparaître le button btnValidateCommand après le click
+        btnValidateCommand.classList.remove("d-none")
         
         //Relie le lien backToProducts du html au javascript
         const backToProducts = document.getElementById("backToProducts")
         //Fais disparaître le lien backToProducts lors du click sur le bouton, donc lors de l'affichage du formulaire
         backToProducts.classList.add("d-none");
+    })//Fin du addEventListener de btnValidateBasket
+    
+    
+    //REGEX
+    
+    //Déclaration des différentes REGEX pour vérifier que les champs du formulaire sont remplis correctement
+    
+    //Fonction déclarant la regex name pour vérifier le format du prénom
+    function checkFirstname(){
+        //Rattache l'élément du html au javascript(l'input du formulaire à vérifier)
+        const firstname = document.getElementById("firstname")
+        //Regex pour les noms propres : ici elle autorise les lettres de a à z en majuscule et en minuscule, et de 2 à 35 caractères *
+        //Ici on crée un nouvel objet RegExp, une des 2 méthodes d'écriture de Regex possible. Strictement équivalente à la regex de lastname
+        var regexName = new RegExp("^[a-zA-Z]{2,35}$", "g")
+        //Le if va vérifier que la regex (regexName) est respecté sur la valeur de l'input visé (firstname) avec la méthode test
+        if(regexName.test(firstname.value)) {
+            //Si la value respecte la regex, affiche ceci dans le console log, et renvoie true
+            console.log("Le prénom est valide")
+            return true;
+        }
+        else{
+            //Si la value ne respecte pas la regex, affiche ceci dans le console log et ne renvoie rien
+            console.log("Erreur dans le format du prénom !")
+        }
+    }
+    
+    //Fonction déclarant la regex name pour vérifier le format du nom
+    function checkLastname(){
+        //Rattache l'élément du html au javascript(l'input du formulaire à vérifier)
+        const firstname = document.getElementById("lastname")
+        //Regex pour les noms propres : ici elle autorise les lettres de a à z en majuscule et en minuscule, et de 2 à 35 caractères *
+        //Ici on déclare directement la régex, une des 2 méthodes d'écriture de Regex possible. Strictement équivalente à la regex de firstname
+        var regexName = /^[a-zA-Z]{2,35}$/g
+        //Le if va vérifier que la regex (regexName) est respecté sur la valeur de l'input visé (lastname) avec la méthode test
+        if(regexName.test(lastname.value)) {
+            //Si la value respecte la regex, affiche ceci dans le console log, et renvoie true
+            console.log("Le nom est valide")
+            return true;
+        }
+        else{
+            //Si la value ne respecte pas la regex, affiche ceci dans le console log et ne renvoie rien
+            console.log("Erreur dans le format du nom !")
+        }
+    }
+    
+    function checkEmail(){
+        //Rattache l'élément du html au javascript(l'input du formulaire à vérifier)
+        const email = document.getElementById("email")
+        //Regex pour les noms propres : ici elle autorise les lettres de a à z en majuscule et en minuscule, et de 2 à 35 caractères *
+        var regexMail = new RegExp("^[a-zA-Z0-9\-_]","g")
+        //Le if va vérifier que la regex (regexMail) est respecté sur la valeur de l'input visé (email) avec la méthode test
+        if(regexMail.test(email.value)) {
+            //Si la value respecte la regex, affiche ceci dans le console log, et renvoie true
+            console.log("L'email est valide")
+            return true;
+        }
+        else{
+            //Si la value ne respecte pas la regex, affiche ceci dans le console log et ne renvoie rien
+            console.log("Erreur dans le format du mail !")
+        }
+    }
+    //addEventListener sur le click du button btnValidateCommand, qui va appeler les fonctions de regex pour le formulaire
+    btnValidateCommand.addEventListener("click", (event) => {
+        event.preventDefault;
+        
+        checkFirstname();
+        checkLastname();
+        checkEmail();
+        
     })
+    
+    
+    
+    
+    
+    
     
 }//Fin de la function displayForm()
 

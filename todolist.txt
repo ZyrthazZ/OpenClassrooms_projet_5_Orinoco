@@ -1,7 +1,8 @@
 HTML = Faire la page confirmation
 
 Javascript = 
-            - 
+            - Créer les regex sur tous les éléments du formulaire
+            - Créer un bouton permettant d'envoyer la commande
             -
             
                 
