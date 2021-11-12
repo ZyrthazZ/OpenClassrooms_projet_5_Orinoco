@@ -288,8 +288,8 @@ function displayForm(){
                     <input type="" class="form-control" id="country" placeholder="France">
                 </div>
                 <div class="form-group col-md-4">
-                    <label for="postalcode">Code Postal</label>
-                    <input type="" class="form-control" id="postalcode" placeholder="75000">
+                    <label for="zipcode">Code Postal</label>
+                    <input type="" class="form-control" id="zipcode" placeholder="75000">
                 </div>
             </div>
         </form>
@@ -328,11 +328,11 @@ function displayForm(){
     function checkFirstname(){
         //Rattache l'élément du html au javascript(l'input du formulaire à vérifier)
         const firstname = document.getElementById("firstname")
-        //Regex pour les noms propres : ici elle autorise les lettres de a à z en majuscule et en minuscule, les caractères avec accents comme é ou à, et de 2 à 35 caractères *
+        //Regex pour les noms propres : ici elle autorise les lettres de a à z en majuscule et en minuscule, les caractères avec accents comme é ou à, et de 2 à 50 caractères *
         //Ici on crée un nouvel objet RegExp, une des 2 méthodes d'écriture de Regex possible. Strictement équivalente à la regex de lastname
         var regexName = new RegExp("^(([a-zA-ZÜ-ü]+[\ \'\-]{1}[a-zA-ZÜ-ü]+)|([a-zA-ZÜ-ü]+)){2,50}$", "g");
         //
-        //Le if va vérifier que la regex (regexName) est respecté sur la valeur de l'input visé (firstname) avec la méthode test
+        //Le if va vérifier que la regex (regexName) est respectée sur la valeur de l'input visé (firstname) avec la méthode test
         if(regexName.test(firstname.value)) {
             //Si la value respecte la regex, affiche ceci dans le console log, et renvoie true
             console.log("Le prénom est valide")
@@ -351,7 +351,7 @@ function displayForm(){
         //Regex pour les noms propres : ici elle autorise les lettres de a à z en majuscule et en minuscule, les caractères avec accents comme é ou à, et de 2 à 35 caractères *
         //Ici on déclare directement la régex, une des 2 méthodes d'écriture de Regex possible. Strictement équivalente à la regex de firstname
         var regexName = /^(([a-zA-ZÜ-ü]+[\ \'\-]{1}[a-zA-ZÜ-ü]+)|([a-zA-ZÜ-ü]+)){2,50}$/g
-        //Le if va vérifier que la regex (regexName) est respecté sur la valeur de l'input visé (lastname) avec la méthode test
+        //Le if va vérifier que la regex (regexName) est respectée sur la valeur de l'input visé (lastname) avec la méthode test
         if(regexName.test(lastname.value)) {
             //Si la value respecte la regex, affiche ceci dans le console log, et renvoie true
             console.log("Le nom est valide")
@@ -363,15 +363,16 @@ function displayForm(){
         }
     }
     
+    //Fonction déclarant la regex Mail pour vérifier le format de l'email
     function checkEmail(){
         //Rattache l'élément du html au javascript(l'input du formulaire à vérifier)
         const email = document.getElementById("email")
-        //Regex pour les emails : 
+        //Regex pour les emails : ici elle autorise les caractères de a à z en majuscule et minuscule, les chiffres de 0 à 9. *
+        //Il est obligatoire de mettre au moins un caractère alphanumérique en début de mail, plus loin un @ est obligatoire, suivi d'au moins 1 caractère *
+        //alphanumérique, puis un point est obligatoire, suivi d'au moins 2 caractères a à Z 
         var regexMail = new RegExp("^[a-zA-Z0-9\-_]{1,}[a-zA-Z0-9\.\-_]*@[a-zA-Z0-9\-_]{1,}.[a-zA-Z]{2,}","gi")
         
-        //        
-
-        //Le if va vérifier que la regex (regexMail) est respecté sur la valeur de l'input visé (email) avec la méthode test
+        //Le if va vérifier que la regex (regexMail) est respectée sur la valeur de l'input visé (email) avec la méthode test
         if(regexMail.test(email.value)) {
             //Si la value respecte la regex, affiche ceci dans le console log, et renvoie true
             console.log("L'email est valide")
@@ -383,16 +384,17 @@ function displayForm(){
         }
     }
     
-    
+    //Fonction déclarant la regex Adress pour vérifier le format de l'adresse
     function checkAdress(){
         //Rattache l'élément du html au javascript(l'input du formulaire à vérifier)
         const adress = document.getElementById("adress")
-        //Regex pour les adresses 
+        //Regex pour les adresses : ici elle autorise les lettres de a à z en majuscule et en minuscule, les caractères avec accents comme é ou à, les chiffres de 0 à 9, et de 4 à 50 caractères *
+        //Un caractère alphanumérique est obligatoire en début d'adresse, ensuite les nombres ou mots doivent être séparés par 1 seul espace *
+        //Des caractères comme . ' - / sont autorisés.
         var regexAdress = new RegExp("^([a-zA-ZÜ-ü0-9]+( [a-zA-ZÜ-ü0-9_\.\'\-\/]+)*){4,50}$", "g")
         
         //        
-
-        //Le if va vérifier que la regex (regexAdress) est respecté sur la valeur de l'input visé (adress) avec la méthode test
+        //Le if va vérifier que la regex (regexAdress) est respectée sur la valeur de l'input visé (adress) avec la méthode test
         if(regexAdress.test(adress.value)) {
             //Si la value respecte la regex, affiche ceci dans le console log, et renvoie true
             console.log("L'adresse est valide")
@@ -405,8 +407,60 @@ function displayForm(){
         
     }
     
+    //Fonction déclarant la regex Town pour vérifier le format de la ville
+    function checkTown(){
+        //Rattache l'élément du html au javascript(l'input du formulaire à vérifier)
+        const town = document.getElementById("town")
+        //Regex pour les villes : ici elle autorise les lettres de a à z en majuscule et en minuscule, les caractères avec accents comme é ou à, et de 2 à 35 caractères *
+        var regexTown = new RegExp("^(([a-zA-ZÜ-ü]+[\ \'\-]{1}[a-zA-ZÜ-ü]+)|([a-zA-ZÜ-ü]+)){2,50}$", "g")
+        //Le if va vérifier que la regex (regexTown) est respectée sur la valeur de l'input visé (town) avec la méthode test
+        if(regexTown.test(town.value)) {
+            //Si la value respecte la regex, affiche ceci dans le console log, et renvoie true
+            console.log("La ville est valide")
+            return true;
+        }
+        else{
+            //Si la value ne respecte pas la regex, affiche ceci dans le console log et ne renvoie rien
+            console.log("Erreur dans le format de la ville !")
+        }
+    }
     
+    //Fonction déclarant la regex Country pour vérifier le format du pays
+    function checkCountry(){
+        //Rattache l'élément du html au javascript(l'input du formulaire à vérifier)
+        const country = document.getElementById("country")
+        //Regex pour les pays : ici elle autorise les lettres de a à z en majuscule et en minuscule, les caractères avec accents comme é ou à, et de 2 à 35 caractères *
+        var regexCountry = new RegExp("^(([a-zA-ZÜ-ü]+[\ \'\-]{1}[a-zA-ZÜ-ü]+)|([a-zA-ZÜ-ü]+)){2,50}$", "g")
+                //Le if va vérifier que la regex (regexCountry) est respectée sur la valeur de l'input visé (country) avec la méthode test
+        if(regexCountry.test(country.value)) {
+            //Si la value respecte la regex, affiche ceci dans le console log, et renvoie true
+            console.log("Le pays est valide")
+            return true;
+        }
+        else{
+            //Si la value ne respecte pas la regex, affiche ceci dans le console log et ne renvoie rien
+            console.log("Erreur dans le format du pays !")
+        }
+    }
     
+    //Fonction déclarant la regex Zipcode pour vérifier le format du code postal
+    function checkZipcode(){
+        //Rattache l'élément du html au javascript(l'input du formulaire à vérifier)
+        const zipcode = document.getElementById("zipcode")
+        //Regex pour les codes postaux : Autorise seulement 5 chiffres de 0 à 9
+        var regexZipcode = new RegExp("^([0-9]){5}$", "g");
+        
+        //Le if va vérifier que la regex (regexZipcode) est respectée sur la valeur de l'input visé (zipcode) avec la méthode test
+        if(regexZipcode.test(zipcode.value)) {
+            //Si la value respecte la regex, affiche ceci dans le console log, et renvoie true
+            console.log("Le code postal est valide")
+            return true;
+        }
+        else{
+            //Si la value ne respecte pas la regex, affiche ceci dans le console log et ne renvoie rien
+            console.log("Erreur dans le format du code postal !")
+        }
+    }
     
     //addEventListener sur le click du button btnValidateCommand, qui va appeler les fonctions de regex pour le formulaire
     btnValidateCommand.addEventListener("click", (event) => {
@@ -416,6 +470,9 @@ function displayForm(){
         checkLastname();
         checkEmail();
         checkAdress();
+        checkTown();
+        checkCountry();
+        checkZipcode();
     })
     
     
@@ -456,7 +513,3 @@ function displayBasketProducts(){
 
 }
 */
-
-
-
-
