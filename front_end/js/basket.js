@@ -462,6 +462,9 @@ function displayForm(){
         }
     }
     
+    const products = basketContent
+    console.log("products", products)
+    
     //addEventListener sur le click du button btnValidateCommand, qui va appeler les fonctions de regex pour le formulaire
     btnValidateCommand.addEventListener("click", (event) => {
         event.preventDefault;
@@ -473,9 +476,50 @@ function displayForm(){
         checkTown();
         checkCountry();
         checkZipcode();
+        
+        if(checkFirstname() && checkLastname() && checkEmail() && checkAdress() && checkTown() && checkCountry() && checkZipcode()){
+            console.log("Tous les champs du formulaire sont bien remplis !")
+            let contact = {
+                firstName : document.getElementById("firstname").value,
+                lastName : document.getElementById("lastname").value,
+                address : document.getElementById("adress").value,
+                city : document.getElementById("town").value,
+                email : document.getElementById("email").value,
+            }
+            console.log("contact", contact);
+            function sendOrder(){
+                fetch("http://localhost:3000/api/cameras/order", {
+                  method: "POST",
+                  headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                  },
+                  body: JSON.stringify(contact, products)
+                  
+                })
+                .then(function(responce) {
+                  if (responce.ok) {
+                    return responce.json();
+                  }
+                })
+                .then(function(contact) {
+                  localStorage.setItem("order", JSON.stringify(contact));
+                })
+                .catch(function (err) {
+                    alert("error");
+                })
+            };//Fin de la fonction sendOrder()
+            sendOrder();
+        
+            
+        }
+        else{
+            console.log("Une erreur s'est glissée dans le formulaire !")
+        }
     })
     
     
+
     
     
     
@@ -486,10 +530,18 @@ function displayForm(){
 
 
 
-
-
-
-
+//Ancienne version de contact pour le POST fetch sur l'API
+/*
+let contact = {
+    firstName : document.getElementById("firstname").value,
+    lastName : document.getElementById("lastname").value,
+    address : document.getElementById("adress").value,
+    city : document.getElementById("town").value,
+    email : document.getElementById("email").value,
+    country : document.getElementById("country").value,
+    zipcode : document.getElementById("zipcode").value,
+}
+*/
 
 
 
