@@ -1,9 +1,7 @@
 HTML = Faire la page confirmation
 
 Javascript = 
-            - Finir les regex du formulaire
-            - Faire la fonction d'envoie du formulaire (envoyer si toutes les fonctions de regex renvoient true)
-            - Fetch en post la fiche de commande avec le contact et le panier
+            - Faire la page confirmation.html, en récupérant les données de la commande ("orderData") dans le localStorage
             
                 
             Affichage console.log d'une div : impossible, valeur null //Résolu : les scripts JS étaient en haut de la page html, ce qui empêchait la console d'avoir toute les données

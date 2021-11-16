@@ -462,7 +462,12 @@ function displayForm(){
         }
     }
     
-    const products = basketContent
+    //const products = basketContent
+    //console.log("products", products)
+    const products = [];
+    basketContent.forEach(produit => {
+        products.push(produit.id)
+    });
     console.log("products", products)
     
     //addEventListener sur le click du button btnValidateCommand, qui va appeler les fonctions de regex pour le formulaire
@@ -477,6 +482,7 @@ function displayForm(){
         checkCountry();
         checkZipcode();
         
+        //Va vérifier si toutes les fonctions citées renvoient "true"
         if(checkFirstname() && checkLastname() && checkEmail() && checkAdress() && checkTown() && checkCountry() && checkZipcode()){
             console.log("Tous les champs du formulaire sont bien remplis !")
             let contact = {
@@ -485,8 +491,11 @@ function displayForm(){
                 address : document.getElementById("adress").value,
                 city : document.getElementById("town").value,
                 email : document.getElementById("email").value,
+                country : document.getElementById("country").value,
+                zipcode : document.getElementById("zipcode").value,            
             }
             console.log("contact", contact);
+            //Fonction pour envoyer la commande. Fait une requête POST sur l'API (URL + /order) en envoyant les objets contact et products au format souhaité par l'API
             function sendOrder(){
                 fetch("http://localhost:3000/api/cameras/order", {
                   method: "POST",
@@ -494,7 +503,7 @@ function displayForm(){
                     'Accept': 'application/json',
                     'Content-Type': 'application/json'
                   },
-                  body: JSON.stringify(contact, products)
+                  body: JSON.stringify({contact, products})
                   
                 })
                 .then(function(responce) {
@@ -502,16 +511,33 @@ function displayForm(){
                     return responce.json();
                   }
                 })
-                .then(function(contact) {
-                  localStorage.setItem("order", JSON.stringify(contact));
+                .then(response => {
+                    
+                    //Va chercher l'id renvoyé par l'API, qui correspond au numéro de commande
+                    let orderId = response.orderId;
+                    //Va chercher le prix total dans la page html
+                    let totalPrice = document.getElementById("totalPrice").textContent;
+                    
+                    //Création d'un objet contenant les données nécessaires à l'affichage de la page confirmOrder.html
+                    let orderData = {
+                        orderId,
+                        totalPrice,
+                        contact
+                    };
+                    
+                    console.log("orderData", orderData);
+                    
+                    //Stocke cet objet dans le localStorage afin de pouvoir le réutiliser sur la page confirmation.html
+                    localStorage.setItem("orderData", JSON.stringify(orderData));
+                    
                 })
-                .catch(function (err) {
-                    alert("error");
+                .catch(function (error) {
+                    alert("error", error);
                 })
             };//Fin de la fonction sendOrder()
-            sendOrder();
-        
             
+            //Appel de la fonction sendOrder()
+            sendOrder();
         }
         else{
             console.log("Une erreur s'est glissée dans le formulaire !")
@@ -519,29 +545,8 @@ function displayForm(){
     })
     
     
-
-    
-    
-    
-    
     
 }//Fin de la function displayForm()
-
-
-
-
-//Ancienne version de contact pour le POST fetch sur l'API
-/*
-let contact = {
-    firstName : document.getElementById("firstname").value,
-    lastName : document.getElementById("lastname").value,
-    address : document.getElementById("adress").value,
-    city : document.getElementById("town").value,
-    email : document.getElementById("email").value,
-    country : document.getElementById("country").value,
-    zipcode : document.getElementById("zipcode").value,
-}
-*/
 
 
 
