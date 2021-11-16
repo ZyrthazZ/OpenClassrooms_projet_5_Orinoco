@@ -530,6 +530,8 @@ function displayForm(){
                     //Stocke cet objet dans le localStorage afin de pouvoir le réutiliser sur la page confirmation.html
                     localStorage.setItem("orderData", JSON.stringify(orderData));
                     
+                    window.location.href = "confirmation.html";
+                    
                 })
                 .catch(function (error) {
                     alert("error", error);
