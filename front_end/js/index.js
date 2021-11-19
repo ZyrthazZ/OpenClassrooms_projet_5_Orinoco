@@ -1,24 +1,15 @@
-main () //Éxécute la fonction main
-
 /**
     Fonction principale de la page, va appeler les différentes fonctions
  */
-
-    const testUn = document.getElementById("products")
-    console.log("test1", testUn)
-
-async function main() {
+(async function () {
     const products = await getProduct();
-    
+
     console.log("APIproducts", products)
-    
-    const testDeux = document.getElementById("products")
-    console.log("test2", testDeux)
-    
+
     for (product of products) {
         displayProducts(products)
     }
-}
+})()
 
 /**
     Fonction permettant d'afficher les informations de l'API dans la page, en remplaçant les id de index.html
@@ -27,7 +18,7 @@ async function main() {
 function displayProducts() {
     const templateElt = document.getElementById("templateProduct") //Récupère le template présent dans le HTML
     const cloneElt = document.importNode(templateElt.content, true) //Clone ce template
-    
+
     //Envoie les données récupérées dans l'API directement dans le DOM aux #id correspondants
     cloneElt.getElementById("product__name").textContent = product.name
     cloneElt.getElementById("product__description").textContent = product.description
@@ -35,8 +26,6 @@ function displayProducts() {
     cloneElt.getElementById("product__img").src = product.imageUrl
     cloneElt.getElementById("product__img").alt = "Modèle appareil photo" + product.name
     cloneElt.getElementById("product__link").href += `?_id=${product._id}`
-     
+
     document.getElementById("products").appendChild(cloneElt) //Affiche les templates clonés en enfant de l'élément indiqué
-}
-
-
+} //Fin de la fonction displayProducts

@@ -1,156 +1,174 @@
 <!DOCTYPE html>
 <html lang="fr">
-    <head>
-        <meta charset="utf-8"/>
-        
-        <meta name="description" content="La référence pour les appareils photos vintage. Retrouvez nos produits de qualité au meilleur prix !">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <link rel="shortcut icon" type="image/png" href="favicon.jpg">
-        
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-        <link rel="stylesheet" href="css/main.css">
-        
-        <title>Orinoco</title>
-        
-        </head>
-    <body class="bg-light">
-        
-        <!--HEADER-->
-        <header>
-            <div class="container">
-                <div class="row">
-                    <nav class="col navbar navbar-expand-lg navbar-light bg-light mx-auto">
-                        <img src="../back_end/images/logo.png" class="img-fluid mx-lg-5 order-0" width="350"  alt="Logo Orinoco"/>
-                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarContent">
-                            <span class="navbar-toggler-icon"></span>
-                        </button>
-                        <div id="navbarContent" class="collapse navbar-collapse  justify-content-lg-end">
-                            <ul class="navbar-nav order-1">
-                                <li class="nav-item">
-                                    <a class="nav-link text-dark" href="index.html">Accueil</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link text-dark" href="pages/basket.html">Panier</a>
-                                </li>
-                            </ul>
-                        </div>
-                    </nav>
-                </div>
-            </div>
-        </header>
-        
-        <!--MAIN-->
-        <main class="mt-5">
-            
-            <!--Titre et présentation-->
-            <section class="bg-primary">
-                <h1 class="text-center text-white py-2">Orinoco, la référence des appareils photos vintages</h1>
-                <p class="text-center text-white py-3">Faîtes votre choix parmi nos différents modèles de qualité</p>
-            </section>
-            
-            <!--Carousel de photos d'appareils-->
-            <section class="container my-5">
-                 <div class="row">
-                    <div class="col">
-                        <div id="carouselControls" class="carousel slide" data-ride="carousel">
-                            <div class="carousel-inner">
-                                <div class="carousel-item active">
-                                    <img src="../back_end/images/vcam_1.jpg" class="d-block w-100" alt="Modèle appareil photo Zurss 50S"/>
-                                </div>
-                                <div class="carousel-item">
-                                    <img src="../back_end/images/vcam_2.jpg" class="d-block w-100" alt="Modèle appareil photo Hirsch 400DTS"/>
-                                </div>
-                                <div class="carousel-item">
-                                    <img src="../back_end/images/vcam_3.jpg" class="d-block w-100" alt="Modèle appareil photo Franck JS 105"/>
-                                </div>
-                                <div class="carousel-item">
-                                    <img src="../back_end/images/vcam_4.jpg" class="d-block w-100" alt="Modèle appareil photo Kuros TTS"/>
-                                </div>
-                                <div class="carousel-item">
-                                    <img src="../back_end/images/vcam_5.jpg" class="d-block w-100" alt="Modèle appareil photo Katatone"/>
-                                </div>
-                            </div>
-                            <a class="carousel-control-prev" href="#carouselControls" role="button" data-slide="prev">
-                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                                <span class="sr-only">Précédent</span>
-                            </a>
-                            <a class="carousel-control-next" href="#carouselControls" role="button" data-slide="next">
-                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                                <span class="sr-only">Suivant</span>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </section>
-            
-            <!--Filtre des produits-->
-            <div class="container">
-                <div class="col">
-                    <input class="form-control" id="searchInput" type="text" placeholder="Filtrer...">
-                </div>
-            </div>
-            
-            <!--Présentation des différents produits-->
-            <section class="row m-5" id="products">
-                <template id="templateProduct">
-                    <div class="col-md-6 col-xl-4">
-                        <div class="card mb-5 shadow p-3 mb-5 bg-white rounded">
-                            <img class="card-img-top p-3" id="product__img" src="" alt=""/>
-                            <div class="card-body">
-                                <h5 class="card-title" id="product__name"></h5>
-                                <p class="card-text" id="product__description"></p>
-                                <p class="card-text"><strong id="product__price"></strong></p>
-                                <a class="btn btn-primary stretched-link shadow-lg-danger" id="product__link" href="pages/product.html" role="button">Voir le produit</a>
-                            </div>
-                        </div>
-                    </div>
-                </template>
-            </section>
-            
-            
-        </main>
-        
-        <!--FOOTER-->
-        <footer class="mt-5">
-            <div class="container">
-                <div class="row">
-                    <div class="col">
-                        <ul class="list-inline text-center text-primary">
-                            <li class="list-inline-item"><a class="text-decoration-none" href="#">À propos</a></li>
-                            <li class="list-inline-item">&middot;</li>
-                            <li class="list-inline-item"><a class="text-decoration-none" href="mailto:adressemail.orinoco@mail.com">Contact</a></li>
-                            <li class="list-inline-item">&middot;</li>
-                            <li class="list-inline-item"><a class="text-decoration-none" href="#">Conditions d'utilisations</a></li>
+<head>
+    <meta charset="utf-8" />
+
+    <meta name="description"
+        content="La référence pour les appareils photos vintage. Retrouvez nos produits de qualité au meilleur prix !">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" type="image/png" href="favicon.jpg">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/main.css">
+
+    <title>Orinoco</title>
+
+</head>
+
+<body class="bg-light">
+
+    <!--HEADER-->
+    <header>
+        <div class="container">
+            <div class="row">
+                <nav class="col navbar navbar-expand-lg navbar-light bg-light mx-auto">
+                    <img src="../back_end/images/logo.png" class="img-fluid mx-lg-5 order-0" width="350"
+                        alt="Logo Orinoco" />
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarContent">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div id="navbarContent" class="collapse navbar-collapse  justify-content-lg-end">
+                        <ul class="navbar-nav order-1">
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" href="index.html">Accueil</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" href="pages/basket.html">Panier</a>
+                            </li>
                         </ul>
                     </div>
-                    <p class="text-center">Orinoco © 2021 ZyrthazZ</p>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!--MAIN-->
+    <main class="mt-5">
+
+        <!--Titre et présentation-->
+        <section class="bg-primary">
+            <h1 class="text-center text-white py-2">Orinoco, la référence des appareils photos vintages</h1>
+            <p class="text-center text-white py-3">Faîtes votre choix parmi nos différents modèles de qualité</p>
+        </section>
+
+        <!--Carousel de photos d'appareils-->
+        <section class="container my-5">
+            <div class="row">
+                <div class="col">
+                    <div id="carouselControls" class="carousel slide" data-ride="carousel">
+                        <div class="carousel-inner">
+                            <div class="carousel-item active">
+                                <img src="../back_end/images/vcam_1.jpg" class="d-block w-100"
+                                    alt="Modèle appareil photo Zurss 50S" />
+                            </div>
+                            <div class="carousel-item">
+                                <img src="../back_end/images/vcam_2.jpg" class="d-block w-100"
+                                    alt="Modèle appareil photo Hirsch 400DTS" />
+                            </div>
+                            <div class="carousel-item">
+                                <img src="../back_end/images/vcam_3.jpg" class="d-block w-100"
+                                    alt="Modèle appareil photo Franck JS 105" />
+                            </div>
+                            <div class="carousel-item">
+                                <img src="../back_end/images/vcam_4.jpg" class="d-block w-100"
+                                    alt="Modèle appareil photo Kuros TTS" />
+                            </div>
+                            <div class="carousel-item">
+                                <img src="../back_end/images/vcam_5.jpg" class="d-block w-100"
+                                    alt="Modèle appareil photo Katatone" />
+                            </div>
+                        </div>
+                        <a class="carousel-control-prev" href="#carouselControls" role="button" data-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="sr-only">Précédent</span>
+                        </a>
+                        <a class="carousel-control-next" href="#carouselControls" role="button" data-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="sr-only">Suivant</span>
+                        </a>
+                    </div>
                 </div>
             </div>
-        </footer>
-        
-        
-    </body>
-    
-    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-        
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-    
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
-    
-    <script>
-        $(document).ready(function(){
-           $("#searchInput").on("keyup", function() {
-              var value = $(this).val().toLowerCase();
-              $("#products .col-md-6").filter(function() {
-                 $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
-              });
-           });
+        </section>
+
+        <!--Filtre des produits-->
+        <div class="container">
+            <div class="col">
+                <input class="form-control" id="searchInput" type="text" placeholder="Filtrer...">
+            </div>
+        </div>
+
+        <!--Présentation des différents produits-->
+        <section class="row m-5" id="products">
+            <template id="templateProduct">
+                <div class="col-md-6 col-xl-4">
+                    <div class="card mb-5 shadow p-3 mb-5 bg-white rounded">
+                        <img class="card-img-top p-3" id="product__img" src="" alt="" />
+                        <div class="card-body">
+                            <h5 class="card-title" id="product__name"></h5>
+                            <p class="card-text" id="product__description"></p>
+                            <p class="card-text"><strong id="product__price"></strong></p>
+                            <a class="btn btn-primary stretched-link shadow-lg-danger" id="product__link"
+                                href="pages/product.html" role="button">Voir le produit</a>
+                        </div>
+                    </div>
+                </div>
+            </template>
+        </section>
+
+
+    </main>
+
+    <!--FOOTER-->
+    <footer class="mt-5">
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <ul class="list-inline text-center text-primary">
+                        <li class="list-inline-item"><a class="text-decoration-none" href="#">À propos</a></li>
+                        <li class="list-inline-item">&middot;</li>
+                        <li class="list-inline-item"><a class="text-decoration-none"
+                                href="mailto:adressemail.orinoco@mail.com">Contact</a></li>
+                        <li class="list-inline-item">&middot;</li>
+                        <li class="list-inline-item"><a class="text-decoration-none" href="#">Conditions
+                                d'utilisations</a></li>
+                    </ul>
+                </div>
+                <p class="text-center">Orinoco © 2021 ZyrthazZ</p>
+            </div>
+        </div>
+    </footer>
+
+
+</body>
+
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+    integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous">
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+    integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous">
+</script>
+
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+    integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous">
+</script>
+
+<script>
+    $(document).ready(function () {
+        $("#searchInput").on("keyup", function () {
+            var value = $(this).val().toLowerCase();
+            $("#products .col-md-6").filter(function () {
+                $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+            });
         });
-     </script>
- 
-    
-    <script src="js/functions.js"></script>
-    <script src="js/index.js"></script>
-    
+    });
+</script>
+
+
+<script src="js/functions.js"></script>
+<script src="js/index.js"></script>
+
 
 </html>

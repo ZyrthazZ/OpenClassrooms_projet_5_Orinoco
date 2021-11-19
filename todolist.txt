@@ -1,8 +1,5 @@
 
 Javascript = 
-            
-                
-            Affichage console.log d'une div : impossible, valeur null //Résolu : les scripts JS étaient en haut de la page html, ce qui empêchait la console d'avoir toute les données
 
 CSS : (non prioritaire :) - Ajouter une animation sur la page basket, lors de l'appui sur le bouton validateBasket, pour remplire l'appartiion du formulaire et la disparition du lien backToProducts + fluide
 

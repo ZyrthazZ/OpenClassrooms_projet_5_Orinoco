@@ -4,13 +4,16 @@
 })()
 
 //Fonction permettant d'afficher les éléments de la page confirmation
-function displayConfirmationPage(){
-    
-    
+function displayConfirmationPage() {
+
+
+    //Création de la const orderData, allant récupérer les informations de orderData dans le localStorage
     const orderData = JSON.parse(localStorage.getItem("orderData"))
-    
+
+    //Relie le html au javascript
     const confirmText = document.getElementById("confirmText")
-    
+
+    //Injecte le texte dans le html, avec des informations dynamiques fournies par orderData
     confirmText.innerHTML = `
     <div class="col my-5">
         <div class="container bg-white text-center">
@@ -25,9 +28,11 @@ function displayConfirmationPage(){
         </div>
     </div>
     `
-    
+
+    //Relie le html au javascript
     const goBackToIndex = document.getElementById("goBackToIndex")
-    
+
+    //addEventListener sur le bouton goBackToIndex, vidant le localStorage de la commande
     goBackToIndex.addEventListener("click", (event) => {
         event.preventDefault;
         localStorage.clear()
